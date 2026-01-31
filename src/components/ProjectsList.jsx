@@ -1,0 +1,43 @@
+export const ProjectsList = [
+    {
+        title: "titre",
+        description: "description",
+        image:"/projects/blabla.png",
+        tags: ["react", "php", "Symfony"],
+        link: "#",
+        github: "#",
+    },
+    {
+        title: "titre",
+        description: "description",
+        image:"/projects/blabla.png",
+        tags: ["react", "php", "Symfony"],
+        link: "#",
+        github: "#",
+    },
+    {
+        title: "titre",
+        description: "description",
+        image:"/projects/blabla.png",
+        tags: ["react", "php", "Symfony"],
+        link: "#",
+        github: "#",
+    },
+    {
+        title: "titre",
+        description: "description",
+        image:"/projects/blabla.png",
+        tags: ["react", "php", "Symfony"],
+        link: "#",
+        github: "#",
+    },
+    {
+        title: "titre",
+        description: "description",
+        image:"/projects/blabla.png",
+        tags: ["react", "php", "Symfony"],
+        link: "#",
+        github: "#",
+    },
+];
+
