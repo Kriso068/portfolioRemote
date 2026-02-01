@@ -1,5 +1,5 @@
 import { Button } from "@/components/Button";
-import { ArrowRight, ChevronDown, Download, Github, Linkedin } from "lucide-react";
+import { ArrowRight, ChevronDown, Download, Github, Linkedin, Target } from "lucide-react";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
 
 const skills = [
@@ -67,7 +67,7 @@ export const Hero = () => {
 
                         {/* CTA */}
                         <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300">
-                            <Button size="lg">
+                            <Button href="#contact" size="lg">
                                 Contact Me <ArrowRight className="w-5 h-5"/>
                             </Button>
                             <AnimatedBorderButton>
@@ -81,11 +81,11 @@ export const Hero = () => {
                                 Follow Me:
                             </span>
                             {[
-                                {icon: Github, href:"#"},
-                                {icon: Linkedin, href:"#"},
+                                {icon: Github, href:"https://github.com/kriso068", target:"_blank"},
+                                {icon: Linkedin, href:"https://www.linkedin.com/in/nicolas-gutknecht", target:"_blank"},
                                 
                             ].map((social,idx) => (
-                                <a href={social.href} key={idx} className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all duration-300">{<social.icon className="w-5 h-5"/>} </a>
+                                <a href={social.href} target={social.target} key={idx} className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all duration-300">{<social.icon className="w-5 h-5"/>} </a>
                             ))}
                         </div>
                     </div>
@@ -95,7 +95,7 @@ export const Hero = () => {
                         <div className="relative max-w-md mx-auto">
                             <div className="absolute inset-0 rounded-3xl bg-linear-to-br from-primary/30 via-transparent to-primary/10 blur-2xl animate-pulse-glow"/>
                             <div className="relative glass rounded-3xl p-2 glow-border">
-                                <img src="/me.jpg" alt="Nicolas Gutknecht" className="w-full aspect-[4/5] object-cover rounded-2xl"/>
+                                <img src="/me.png" alt="Nicolas Gutknecht" className="w-full aspect-[4/5] object-cover rounded-2xl"/>
 
                                 {/* Floating badge */}
                                 <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-3 animate-float" >

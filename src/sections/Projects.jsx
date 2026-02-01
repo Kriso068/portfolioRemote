@@ -1,4 +1,4 @@
-import { ProjectsList } from "@/components/ProjectsList"
+import { TopSixProjectsList } from "@/components/TopSixProjectsList"
 import { ArrowUpRight, Github } from "lucide-react";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
 
@@ -27,7 +27,7 @@ export const Projects = () => {
                 </div>
                 {/* Projects grid */}
                 <div className="grid md:grid-cols-2 gap-8">
-                    {ProjectsList.map((project, idx) => (
+                    {TopSixProjectsList.map((project, idx) => (
                         <div key={idx} className="group glass rounded-2xl overflow-hidden animate-fade-in md:row-span-1"
                             style={{animationDelay: `${(idx + 1) * 100}ms`}}>
                             {/* Project image */}
