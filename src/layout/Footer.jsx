@@ -32,11 +32,11 @@ export const Footer = () => {
 
           {/* Links */}
           <nav className="flex flex-wrap justify-center gap-6">
-            {footerLinks.map((link) => (
+            {footerLinks.map((link, linkId) => (
               <a
-                key={link.href}
+                key={linkId}
                 href={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 {link.label}
               </a>
@@ -45,9 +45,9 @@ export const Footer = () => {
 
           {/* Social Links */}
           <div className="flex items-center gap-4">
-            {socialLinks.map((social) => (
+            {socialLinks.map((social, socialId) => (
               <a
-                key={social.label}
+                key={socialId}
                 href={social.href}
                 target={social.target}
                 aria-label={social.label}

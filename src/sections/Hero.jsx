@@ -26,10 +26,10 @@ export const Hero = () => {
 
             {/* Green Dots */}
             <div className="absolute overflow-hidden inset-0 pointer-events-none">
-                {[...Array(30)].map((_,idx) => (
+                {[...Array(50)].map((_,idx) => (
                     <div key={idx} className="absolute w-1.5 h-1.5 rounded-full opacity-60" 
                         style= {{
-                            backgroundColor:"#20B2A6",
+                            backgroundColor:"#B4511F",
                             left:`${Math.random()*100}%`,
                             top:`${Math.random()*100}%`,
                             animation: `slow-drift ${15+Math.random() * 20}s ease-in-out infinite`,
@@ -45,7 +45,7 @@ export const Hero = () => {
                     <div className="space-y-8">
                         <div className="animate-fade-in">
                             <span className="inline-flex items-center gap-2 px-4 py-2 roundede-full glass text-sm text-primary" >
-                                <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                                <span className="w-4 h-4 bg-primary rounded-full animate-pulse" />
                                     Full Stack Web Developer – React / PHP / Symfony (Remote)
                             </span>
                         </div>
