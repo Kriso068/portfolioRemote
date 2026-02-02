@@ -1,8 +1,13 @@
 import { TopSixProjectsList } from "@/components/TopSixProjectsList"
 import { ArrowUpRight, Github } from "lucide-react";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
+import { useState } from "react";
 
 export const Projects = () => {
+
+    const disabledClass = "opacity-40 cursor-not-allowed pointer-events-none";
+    const [showFunMessage, setShowFunMessage] = useState(false);
+
     return (
         <section id="projects" className="py-32 relative overflow-hidden">
                 {/* Bg glows */}
@@ -36,15 +41,28 @@ export const Projects = () => {
                                 <div className="absolute inset-0 bg-linear-to-t from-card via-card/50 to-transparent opacity-60"/>
                                 {/* Overlay Links */}
                                 <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    {/* Live link */}
                                     <a
-                                        href={project.link}
-                                        className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
+                                        href={project.link ?? undefined}
+                                        target={project.target}
+                                        className={`p-3 rounded-full glass transition-all
+                                        ${project.link
+                                            ? "hover:bg-primary hover:text-primary-foreground"
+                                            : disabledClass}
+                                        `}
                                     >
                                         <ArrowUpRight className="w-5 h-5" />
                                     </a>
+
+                                    {/* GitHub link */}
                                     <a
-                                        href={project.github}
-                                        className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
+                                        href={project.github ?? undefined}
+                                        target={project.target}
+                                        className={`p-3 rounded-full glass transition-all
+                                        ${project.github
+                                            ? "hover:bg-primary hover:text-primary-foreground"
+                                            : disabledClass}
+                                        `}
                                     >
                                         <Github className="w-5 h-5" />
                                     </a>
@@ -73,10 +91,26 @@ export const Projects = () => {
                 </div>
                 {/* View all CTA */}
                     <div className="text-center mt-12 animate-fade-in animation-delay-500">
-                    <AnimatedBorderButton>
-                        View All Projects
-                        <ArrowUpRight className="w-5 h-5" />
-                    </AnimatedBorderButton>
+                        <AnimatedBorderButton
+                            onClick={() => setShowFunMessage((prev) => !prev)}
+                        >
+                            View All Projects
+                            <ArrowUpRight className="w-5 h-5" />
+                        </AnimatedBorderButton>
+
+                        {showFunMessage && (
+                            <p className="mt-4 text-sm text-muted-foreground animate-fade-in">
+                                More projects coming… quality takes time — and coffee ☕ <br />
+                                <a
+                                href="https://github.com/kriso068"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-primary hover:underline"
+                                >
+                                Meanwhile, you can check my GitHub →
+                                </a>
+                            </p>
+                        )}
                 </div>
             </div>
         </section>

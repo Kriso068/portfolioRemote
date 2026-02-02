@@ -6,6 +6,7 @@ import { About } from "@/sections/About";
 import { Experience } from "@/sections/Experience";
 import { Projects } from "@/sections/Projects";
 import { Contact } from "@/sections/Contact";
+import { ScrollToTop } from "@/components/ScrollToTop";
 function App() {
   return (
     <div className="min-h-screen overflow-x-hidden">
@@ -16,6 +17,7 @@ function App() {
         <Projects />
         <Experience />
         <Contact />
+        <ScrollToTop />
       </main>
       <Footer />
     </div>
