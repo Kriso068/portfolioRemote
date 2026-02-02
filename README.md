@@ -1,73 +1,55 @@
-# React + TypeScript + Vite
+# Nicolas Gutknecht – Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio website built to showcase my work, experience, and approach to building clean and reliable web applications.
 
-Currently, two official plugins are available:
+🌐 **Live website**: https://nicolas-gutknecht.com  
+💻 **GitHub**: https://github.com/kriso068  
+🔗 **LinkedIn**: https://www.linkedin.com/in/nicolas-gutknecht
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ About the Project
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+This portfolio is a single-page application designed to present:
+- My professional experience
+- Selected projects
+- Technical skills and stack
+- A contact form with spam protection
 
-## Expanding the ESLint configuration
+The goal was to keep the design **clean, performant, and readable**, while adding subtle animations and interactions to reflect attention to detail.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠 Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Frontend**: React, Vite
+- **Styling**: Tailwind CSS
+- **Animations**: CSS animations + small JS interactions
+- **Icons**: Lucide React
+- **Email**: EmailJS
+- **Spam Protection**: Google reCAPTCHA
+- **Deployment**: O2Switch
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Features
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Responsive layout (mobile-first)
+- Glassmorphism-inspired UI
+- Animated hero section and timeline
+- Featured projects with live & GitHub links
+- Secure contact form with reCAPTCHA
+- SEO-friendly structure
+- Accessible navigation
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## 📂 Project Structure
+
+```text
+src/
+├─ components/        # Reusable UI components
+├─ sections/          # Page sections (Hero, About, Projects, Experience, Contact)
+├─ assets/            # Images & static assets
+├─ styles/            # Global styles & animations
+└─ main.jsx
