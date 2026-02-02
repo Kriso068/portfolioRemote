@@ -1,0 +1,9 @@
+/* TEAM */
+Developer: Nicolas Gutknecht
+Role: Full Stack Web Developer
+Location: France
+Stack: React, Symfony, PHP, MySQL
+
+/* SITE */
+Standards: HTML5, CSS3
+Tools: Vite, React, Tailwind CSS

@@ -25,7 +25,7 @@ export const Hero = () => {
         <section className="relative min-h-screen flex items-center overflow-hidden">
             {/* Bg */}
             <div className="absolute inset-0">
-                <img src="/heroBg.jpg" alt="Hero image" className="w-full h-full object-cover opacity-40" />
+                <img src="/heroBg.webp" alt="Hero image" className="w-full h-full object-cover opacity-40" />
                 <div className="absolute inset-0 bg-linear-to-b from-background/20 via-background/80 to-background"/>
             </div>
 
@@ -75,7 +75,7 @@ export const Hero = () => {
                             <Button href="#contact" size="lg">
                                 Contact Me <ArrowRight className="w-5 h-5"/>
                             </Button>
-                            <AnimatedBorderButton>
+                            <AnimatedBorderButton href="/cv/nicolas-gutknecht-cv.pdf" download>
                                 <Download className="w-5 h-5" />
                                     Download CV
                             </AnimatedBorderButton>
@@ -90,7 +90,7 @@ export const Hero = () => {
                                 {icon: Linkedin, href:"https://www.linkedin.com/in/nicolas-gutknecht", target:"_blank"},
                                 
                             ].map((social,idx) => (
-                                <a href={social.href} rel="noopener noreferrer" target={social.target} key={idx} className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all duration-300">{<social.icon className="w-5 h-5"/>} </a>
+                                <a href={social.href} rel="noopener noreferrer" target={social.target} aria-label={social.label} key={idx} className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all duration-300">{<social.icon className="w-5 h-5"/>} </a>
                             ))}
                         </div>
                     </div>
@@ -100,7 +100,7 @@ export const Hero = () => {
                         <div className="relative max-w-md mx-auto">
                             <div className="absolute inset-0 rounded-3xl bg-linear-to-br from-primary/30 via-transparent to-primary/10 blur-2xl animate-pulse-glow"/>
                             <div className="relative glass rounded-3xl p-2 glow-border">
-                                <img src="/me.png" alt="Nicolas Gutknecht" className="w-full aspect-[4/5] object-cover rounded-2xl"/>
+                                <img src="/me.webp" alt="Nicolas Gutknecht" className="w-full aspect-[4/5] object-cover rounded-2xl"/>
 
                                 {/* Floating badge */}
                                 <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-3 animate-float" >
