@@ -1,11 +1,19 @@
 import { Github, Linkedin, Twitter, Heart } from "lucide-react";
 
+/**
+ * Social media links displayed in the footer.
+ * External links open in a new tab.
+ */
 const socialLinks = [
-    {icon: Github, href:"https://github.com/kriso068", target:"_blank"},
-    {icon: Linkedin, href:"https://www.linkedin.com/in/nicolas-gutknecht", target:"_blank"}
+    {icon: Github, href:"https://github.com/kriso068", label: "GitHub", target:"_blank"},
+    {icon: Linkedin, href:"https://www.linkedin.com/in/nicolas-gutknecht", label: "LinkedIn", target:"_blank"}
 
 ];
 
+/**
+ * Footer navigation links.
+ * Anchor links are used for one-page navigation.
+ */
 const footerLinks = [
   { href: "#about", label: "About" },
   { href: "#projects", label: "Projects" },
@@ -14,6 +22,8 @@ const footerLinks = [
 ];
 
 export const Footer = () => {
+
+  // Used to keep the copyright year always up to date
   const currentYear = new Date().getFullYear();
 
   return (
@@ -49,6 +59,7 @@ export const Footer = () => {
               <a
                 key={socialId}
                 href={social.href}
+                rel="noopener noreferrer"
                 target={social.target}
                 aria-label={social.label}
                 className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all"

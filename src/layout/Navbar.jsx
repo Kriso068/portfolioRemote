@@ -2,6 +2,11 @@ import { Button } from "@/components/Button";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
+
+/**
+ * Navigation links used for both desktop and mobile menus.
+ * Using anchor links for a smooth one-page navigation experience.
+ */
 const navLinks = [
     {href: "#about", label: "About"},
     {href: "#projects", label: "Projects"},
@@ -11,17 +16,31 @@ const navLinks = [
 
 export const Navbar = () => {
 
+    /**
+     * Controls the visibility of the mobile navigation menu.
+     */
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    /**
+     * Tracks whether the page has been scrolled to apply
+     * a glass background and reduce navbar height.
+     */
     const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() =>{
 
+
+        /**
+         * Adds a scroll listener to toggle navbar styles
+         * once the user scrolls past a certain threshold.
+         */
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50);
         }
 
         window.addEventListener("scroll", handleScroll);
 
+        // Cleanup listener on unmount
         return () => window.removeEventListener("scroll", handleScroll);
     },[]);
 

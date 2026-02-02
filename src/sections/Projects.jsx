@@ -5,7 +5,16 @@ import { useState } from "react";
 
 export const Projects = () => {
 
+    /**
+     * Shared disabled styles for cards where a live link / repo is not available.
+     * pointer-events-none prevents clicks, opacity visually communicates disabled state.
+     */
     const disabledClass = "opacity-40 cursor-not-allowed pointer-events-none";
+
+    /**
+     * When "View All Projects" is clicked, we show a playful message instead of navigating.
+     * This keeps the homepage focused on the best work while still giving a clear fallback (GitHub).
+     */
     const [showFunMessage, setShowFunMessage] = useState(false);
 
     return (
@@ -33,7 +42,7 @@ export const Projects = () => {
                 {/* Projects grid */}
                 <div className="grid md:grid-cols-2 gap-8">
                     {TopSixProjectsList.map((project, idx) => (
-                        <div key={idx} className="group glass rounded-2xl overflow-hidden animate-fade-in md:row-span-1"
+                        <div key={ project.title ?? idx} className="group glass rounded-2xl overflow-hidden animate-fade-in md:row-span-1"
                             style={{animationDelay: `${(idx + 1) * 100}ms`}}>
                             {/* Project image */}
                             <div className="relative overflow-hidden aspect-video">
@@ -45,6 +54,8 @@ export const Projects = () => {
                                     <a
                                         href={project.link ?? undefined}
                                         target={project.target}
+                                        aria-disabled={!project.link}
+                                        rel={project.target === "_blank" ? "noopener noreferrer" : undefined}
                                         className={`p-3 rounded-full glass transition-all
                                         ${project.link
                                             ? "hover:bg-primary hover:text-primary-foreground"
@@ -58,6 +69,8 @@ export const Projects = () => {
                                     <a
                                         href={project.github ?? undefined}
                                         target={project.target}
+                                        rel={project.target === "_blank" ? "noopener noreferrer" : undefined}
+                                        aria-disabled={!project.github}
                                         className={`p-3 rounded-full glass transition-all
                                         ${project.github
                                             ? "hover:bg-primary hover:text-primary-foreground"
@@ -77,6 +90,7 @@ export const Projects = () => {
                                 <p className="text-muted-foreground text-sm">
                                     {project.description}
                                 </p>
+                                 {/* Tech tags */}
                                 <div className="flex flex-wrap gap-2">
                                     {project.tags.map((tag, tagIdx) => (
                                         <span key={tagIdx} className="px-4 py-1.5 rounded-full bg-surface text-xs font-medium border border-border/50 text-muted-foreground hover:border-primary/50 hover:text-primary transition-all duration-300 ">

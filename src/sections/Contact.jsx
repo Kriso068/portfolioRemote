@@ -4,6 +4,11 @@ import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import ReCAPTCHA from "react-google-recaptcha";
 
+
+/**
+ * Contact information shown next to the form.
+ * Email is intentionally not a direct mailto link to reduce spam scraping.
+ */
 const contactInfo = [
   {
     icon: Mail,
@@ -26,25 +31,31 @@ const contactInfo = [
 ];
 
 export const Contact = () => {
-
+    // reCAPTCHA public site key (safe to expose in frontend)
     const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
+    // Controlled form fields
     const [formData, setFormData] =useState({
         name: "",
         email:"",
         message:"",
     });
 
+    // UX state: loading + success/error feedback
     const [isLoading, setIsLoading] = useState(false);
     const [submitStatus, setSubmitStatus] = useState({
         type: null, // 'success' or 'error'
         message: "",
     });
 
+    // reCAPTCHA token handling
     const recaptchaRef = useRef(null);
     const [captchaToken, setCaptchaToken] = useState(null);
 
-
+    /**
+     * Sends the message using EmailJS.
+     * Requires a valid reCAPTCHA token to reduce spam.
+     */
     const handleSubmit = async (e)=> {
         e.preventDefault();
 
@@ -74,6 +85,7 @@ export const Contact = () => {
                     name: formData.name,
                     email: formData.email,
                     message: formData.message,
+                    // EmailJS expects this exact field name for reCAPTCHA validation
                     "g-recaptcha-response": token,
                 },
                 publicKey
@@ -86,6 +98,7 @@ export const Contact = () => {
 
             setFormData({ name: "", email: "", message: "" });
 
+            // Always reset the captcha after a send attempt (success or failure)
             recaptchaRef.current?.reset();
             setCaptchaToken(null);
 
@@ -99,6 +112,8 @@ export const Contact = () => {
             });
 
         } finally {
+
+            // Always reset all
             setIsLoading(false);
             recaptchaRef.current?.reset();
             setCaptchaToken(null);
@@ -121,7 +136,7 @@ export const Contact = () => {
                     <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
                         Let's build{" "}
                         <span className="font-serif italic font-normal text-white">
-                        something great.
+                            something great.
                         </span>
                     </h2>
                     <p className="text-muted-foreground animate-fade-in animation-delay-200">
@@ -152,6 +167,7 @@ export const Contact = () => {
                                     Email
                                 </label>
                                 <input 
+                                    id="email"
                                     type="email" 
                                     required 
                                     placeholder="Your E-mail..."
@@ -166,7 +182,8 @@ export const Contact = () => {
                                 <label htmlFor="message" className="block text-sm font-medium mb-2">
                                     Message
                                 </label>
-                                <textarea 
+                                <textarea
+                                    id="message" 
                                     type="text"
                                     rows={5}
                                     required 

@@ -1,5 +1,9 @@
 import { Code2, Lightbulb, Rocket, Users } from "lucide-react";
 
+/**
+ * Short highlights to summarize how you work (skills + mindset).
+ * Keeping these consistent helps recruiters scan quickly.
+ */
 const highlights = [
     {
         icon: Code2,
@@ -41,19 +45,13 @@ export const About = () => {
                         </h2>
                         <div className="space-y-4 text-muted-foreground animated-fade-in animation-delay-200">
                             <p>
-                                I’m a Full Stack Web Developer with experience in React, PHP, and Symfony.
+                                I’m a Full Stack Web Developer working with React on the frontend and PHP/Symfony on the backend.
                             </p>
                             <p>
-                                I build clean, maintainable web applications, from frontend interfaces to backend logic and APIs.
+                                I enjoy building clean, reliable applications — from UI components to APIs and database-driven features — with a strong focus on maintainability and performance.
                             </p>
                             <p>
-                                I value clear code structure, performance, and reliability.
-                            </p>
-                            <p>
-                                I enjoy collaborating in remote-friendly teams and communicating clearly.
-                            </p>
-                            <p>
-                                I’m currently looking for a full-time remote position.
+                                I work well in remote-friendly teams where communication is clear and ownership matters. I’m currently looking for a full-time remote position.
                             </p>
                         </div>
                         <div className="glass rounded-2xl p-6 glow-border animated-fade-in animtaion-delay-300">

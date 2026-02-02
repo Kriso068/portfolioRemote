@@ -2,6 +2,11 @@ import { Button } from "@/components/Button";
 import { ArrowRight, ChevronDown, Download, Github, Linkedin, Target } from "lucide-react";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
 
+
+/**
+ * Tech stack shown in the marquee.
+ * Keep it short and recognizable (helps recruiters scan quickly).
+ */
 const skills = [
     "Html",
     "Css",
@@ -21,7 +26,7 @@ export const Hero = () => {
             {/* Bg */}
             <div className="absolute inset-0">
                 <img src="/heroBg.jpg" alt="Hero image" className="w-full h-full object-cover opacity-40" />
-                <div className="absolute inset-0 bg-linear-to-b from-background/20 via-backgroung/80 to-background"/>
+                <div className="absolute inset-0 bg-linear-to-b from-background/20 via-background/80 to-background"/>
             </div>
 
             {/* Green Dots */}
@@ -39,12 +44,12 @@ export const Hero = () => {
             </div>
 
             {/* Content */}
-            <div className="container mx-auto px-6 pt-32 pb-20 realative z-10">
+            <div className="container mx-auto px-6 pt-32 pb-20 relative z-10">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                     {/* Left colum - Text content*/}
                     <div className="space-y-8">
                         <div className="animate-fade-in">
-                            <span className="inline-flex items-center gap-2 px-4 py-2 roundede-full glass text-sm text-primary" >
+                            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-primary" >
                                 <span className="w-4 h-4 bg-primary rounded-full animate-pulse" />
                                     Full Stack Web Developer – React / PHP / Symfony (Remote)
                             </span>
@@ -54,10 +59,10 @@ export const Hero = () => {
                             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in animation-delay-100">
                                 Clean <span className="text-primary glow-text">Code</span>
                                 <br />
-                                    build with
+                                    built with
                                 <br />
                                 <span className="font-serif italic font-normal text-white">
-                                    presicion
+                                    precision
                                 </span>
                             </h1>
                             <p className="text-lg text-muted-foreground max-w-lg animate-fade-in animation-delay-200">
@@ -85,7 +90,7 @@ export const Hero = () => {
                                 {icon: Linkedin, href:"https://www.linkedin.com/in/nicolas-gutknecht", target:"_blank"},
                                 
                             ].map((social,idx) => (
-                                <a href={social.href} target={social.target} key={idx} className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all duration-300">{<social.icon className="w-5 h-5"/>} </a>
+                                <a href={social.href} rel="noopener noreferrer" target={social.target} key={idx} className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all duration-300">{<social.icon className="w-5 h-5"/>} </a>
                             ))}
                         </div>
                     </div>
