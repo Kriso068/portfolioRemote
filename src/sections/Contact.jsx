@@ -1,5 +1,5 @@
 import { AlertCircle, CheckCircle, Mail, MapPin, Phone, Send } from "lucide-react";
-import { Button } from "@/components/Button";
+import { Button } from "../components/Button";
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import ReCAPTCHA from "react-google-recaptcha";

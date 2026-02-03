@@ -1,4 +1,4 @@
-import { ExperiencesList } from "@/components/ExperiencesList"
+import { ExperiencesList } from "../components/ExperiencesList"
 
 export const Experience = () => {
     return (
