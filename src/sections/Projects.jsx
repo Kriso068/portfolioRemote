@@ -1,6 +1,6 @@
-import { TopSixProjectsList } from "../components/TopSixProjectsList"
+import { TopSixProjectsList } from "@/components/TopSixProjectsList"
 import { ArrowUpRight, Github } from "lucide-react";
-import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
+import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
 import { useState } from "react";
 
 export const Projects = () => {
