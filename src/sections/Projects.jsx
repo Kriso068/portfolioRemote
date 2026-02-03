@@ -17,6 +17,8 @@ export const Projects = () => {
      */
     const [showFunMessage, setShowFunMessage] = useState(false);
 
+    const [activeProject, setActiveProject] = useState(null);
+
     return (
         <section id="projects" className="py-32 relative overflow-hidden">
                 {/* Bg glows */}
@@ -45,42 +47,63 @@ export const Projects = () => {
                         <div key={ project.title ?? idx} className="group glass rounded-2xl overflow-hidden animate-fade-in md:row-span-1"
                             style={{animationDelay: `${(idx + 1) * 100}ms`}}>
                             {/* Project image */}
-                            <div className="relative overflow-hidden aspect-video">
-                                <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
-                                <div className="absolute inset-0 bg-linear-to-t from-card via-card/50 to-transparent opacity-60"/>
-                                {/* Overlay Links */}
-                                <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    {/* Live link */}
-                                    <a
-                                        href={project.link ?? undefined}
-                                        target={project.target}
-                                        aria-disabled={!project.link}
-                                        rel={project.target === "_blank" ? "noopener noreferrer" : undefined}
-                                        className={`p-3 rounded-full glass transition-all
-                                        ${project.link
-                                            ? "hover:bg-primary hover:text-primary-foreground"
-                                            : disabledClass}
-                                        `}
-                                    >
-                                        <ArrowUpRight className="w-5 h-5" />
-                                    </a>
+                            <div className="relative overflow-hidden aspect-video cursor-pointer" onClick={() => setActiveProject(activeProject === idx ? null : idx)}>
+                                <img
+                                    src={project.image}
+                                    alt={project.title}
+                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-linear-to-t from-card via-card/50 to-transparent opacity-60" />
 
-                                    {/* GitHub link */}
-                                    <a
-                                        href={project.github ?? undefined}
-                                        target={project.target}
-                                        rel={project.target === "_blank" ? "noopener noreferrer" : undefined}
-                                        aria-disabled={!project.github}
-                                        className={`p-3 rounded-full glass transition-all
-                                        ${project.github
-                                            ? "hover:bg-primary hover:text-primary-foreground"
-                                            : disabledClass}
-                                        `}
-                                    >
-                                        <Github className="w-5 h-5" />
-                                    </a>
+                                {/* Overlay Links */}
+                                <div
+                                className={`
+                                    absolute inset-0 flex items-center justify-center gap-4
+                                    transition-opacity duration-300
+                                    ${activeProject === idx ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
+                                    md:opacity-0 md:group-hover:opacity-100 md:pointer-events-auto
+                                `}
+                                >
+                                {/* Live link */}
+                                <a
+                                    href={project.link ?? undefined}
+                                    target={project.target}
+                                    rel={project.target === "_blank" ? "noopener noreferrer" : undefined}
+                                    aria-disabled={!project.link}
+                                    onClick={(e) => e.stopPropagation()}
+                                    className={`p-3 rounded-full glass transition-all
+                                    ${project.link ? "hover:bg-primary hover:text-primary-foreground" : disabledClass}
+                                    `}
+                                >
+                                    <ArrowUpRight className="w-5 h-5" />
+                                </a>
+
+                                {/* GitHub link */}
+                                <a
+                                    href={project.github ?? undefined}
+                                    target={project.target}
+                                    rel={project.target === "_blank" ? "noopener noreferrer" : undefined}
+                                    aria-disabled={!project.github}
+                                    onClick={(e) => e.stopPropagation()}
+                                    className={`p-3 rounded-full glass transition-all
+                                    ${project.github ? "hover:bg-primary hover:text-primary-foreground" : disabledClass}
+                                    `}
+                                >
+                                    <Github className="w-5 h-5" />
+                                </a>
+                                </div>
+                                {/* Optional helper text on mobile */}
+                                <div
+                                    className={`
+                                    absolute bottom-3 left-3 right-3 text-xs text-muted-foreground
+                                    md:hidden transition-opacity
+                                    ${activeProject === idx ? "opacity-0" : "opacity-100"}
+                                    `}
+                                >
+                                    Tap to view links
                                 </div>
                             </div>
+
                             {/* Content */}
                             <div className="p-6 space-y-4">
                                 <div className="flex items-start justify-between">
@@ -100,7 +123,6 @@ export const Projects = () => {
                                 </div>
                             </div>
                         </div>
-
                     ))}
                 </div>
                 {/* View all CTA */}

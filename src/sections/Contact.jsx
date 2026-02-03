@@ -143,8 +143,8 @@ export const Contact = () => {
                         Interested in collaborating? I’m currently looking for a full-time remote role and would be glad to talk about how I can contribute to a team.
                     </p>
                 </div>
-                <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-                    <div className="glass p-8 rounded-3xl border border-primary/30 animate-fade-in animation-delay-300">
+                <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto items-center">
+                    <div className="glass p-6 sm:p-8 rounded-3xl border border-primary/30 animate-fade-in animation-delay-300 max-w-full">
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div>
                                 <label htmlFor="name" className="block text-sm font-medium mb-2">
@@ -210,12 +210,27 @@ export const Contact = () => {
                                         )
                                     }
                             </Button>
-                            <ReCAPTCHA
-                                ref={recaptchaRef}
-                                theme="dark"
-                                sitekey={siteKey}
-                                onChange={(token) => setCaptchaToken(token)}
-                            />
+                            {/* reCAPTCHA (layout-safe on small screens) */}
+                            <div className="w-full overflow-hidden">
+                                <div className="mx-auto sm:mx-0" style={{ width: "213px" }}>
+                                    <div
+                                    style={{
+                                        transform: "scale(0.70)",
+                                        transformOrigin: "top left",
+                                        width: "304px",
+                                        height: "78px",
+                                    }}
+                                    >
+                                    <ReCAPTCHA
+                                        ref={recaptchaRef}
+                                        theme="dark"
+                                        sitekey={siteKey}
+                                        onChange={(token) => setCaptchaToken(token)}
+                                    />
+                                    </div>
+                                </div>
+                            </div>
+
 
                             {submitStatus.type && (
                                 <div className={`flex items-center gap-3 p-4 rounded-xl ${
@@ -243,19 +258,20 @@ export const Contact = () => {
                             </h3>
                             <div className="space-y-4">
                                 {contactInfo.map((item, i) => (
-                                    <a
+                                   <a
                                         key={i}
                                         href={item.href}
-                                        className="flex items-center gap-4 p-4 rounded-xl hover:bg-surface transition-colors group"
+                                        className="flex items-center gap-1 p-0 lg:p-4 lg:gap-4  rounded-xl hover:bg-surface transition-colors group"
                                     >
-                                        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                                        <item.icon className="w-5 h-5 text-primary" />
+                                        <div className="hidden sm:flex w-12 h-12 rounded-xl bg-primary/10 items-center justify-center group-hover:bg-primary/20 transition-colors flex-shrink-0">
+                                            <item.icon className="w-3 h-3 text-primary" />
                                         </div>
-                                        <div>
-                                            <div className="text-sm text-muted-foreground">
-                                                {item.label}
+
+                                        <div className="min-w-0">
+                                            <div className="text-sm text-muted-foreground">{item.label}</div>
+                                            <div className="font-medium text-sm sm:text-base truncate" title={item.value}>
+                                            {item.value}
                                             </div>
-                                            <div className="font-medium">{item.value}</div>
                                         </div>
                                     </a>
                                 ))}

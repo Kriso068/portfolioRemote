@@ -71,8 +71,8 @@ export const Hero = () => {
                         </div>
 
                         {/* CTA */}
-                        <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300">
-                            <Button href="#contact" size="lg">
+                        <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md animate-fade-in animation-delay-300">
+                            <Button href="#contact" size="lg" className="w-full sm:w-auto justify-center">
                                 Contact Me <ArrowRight className="w-5 h-5"/>
                             </Button>
                             <AnimatedBorderButton href="/cv/nicolas-gutknecht-cv.pdf" download>
